@@ -1,0 +1,111 @@
+###################################
+# controller parameters to optimize
+###################################
+
+parameters:
+  Kn:
+    baseline: 1.0
+    initial_guess: 0.5
+    optimized: true
+    range:
+    - 0.5
+    - 2.0
+    MABpath: Kn
+
+  tlat:
+    baseline: 0.235
+    initial_guess: 0.1
+    optimized: true
+    range:
+    - 0.0
+    - 0.5
+    MABpath: tlat
+  ssg:
+    baseline: 0.003
+    initial_guess: 0.0
+    optimized: true
+    range:
+    - -0.005
+    - 0.005
+    MABpath: ssg
+  ds:
+    baseline: 0.684
+    initial_guess: 1.0
+    optimized: false
+    range:
+    - 0.5
+    - 2.0
+    MABpath: ds
+
+###################################
+# constraint functions 
+###################################
+
+constraints:
+  constraint1:
+    inverse: true
+    MABpath: constraint1
+    safety_threshold: -2 # [m]
+    noise_bound: 0.1 # [m]
+    lipschitz_bound: 25 # tuning parameter, safety critical
+    GP:
+      kernel: Matern52
+      prior_mean: -0.5
+      lengthscales: fixed
+      lengthscale: 0.2
+      variance: 1
+      noise_variance: 0.1
+  constraint2:
+    inverse: true
+    MABpath: constraint2
+    safety_threshold: -0.2
+    noise_bound: 0.01
+    lipschitz_bound: 6 # tuning parameter, safety critical
+    GP:
+      kernel: Matern52
+      prior_mean: 0
+      lengthscales: fixed
+      lengthscale: 0.2
+      variance: 0.2
+      noise_variance: 0.01
+
+###################################
+# objective function to optimize
+###################################
+
+objective:
+  inverse: true
+  MABpath: objective
+  safety_threshold:
+  noise_bound: 0.03
+  lipschitz_bound: 1 # TODO: check if in use, if not delete it
+  scaling: 1
+  GP:
+    kernel: Matern52
+    prior_mean: 0
+    lengthscales: flexible
+    lengthscale: 0.2
+    variance: 1
+    noise_variance: 0.03
+
+###################################
+# algorithm parameters
+###################################
+
+safebo_parameters:
+  algorithm: mclosbo
+  iterations: 5
+  beta: 2 # tuning parameter, not safety critical
+  grid_points_per_axis: 50
+
+###################################
+# base configuration
+###################################
+
+base_config:
+  save_plot: true
+  run_baseline: false
+  previous_result:
+  result_folder: D:\Data\Research\Projects\EEMotion\controldesk-automation\results
+
+

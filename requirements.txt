@@ -1,0 +1,5 @@
+GPy==1.13.2
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.2
+ruamel.yaml==0.18.6

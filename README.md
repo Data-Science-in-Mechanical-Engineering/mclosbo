@@ -2,7 +2,7 @@
 
 ## Lipschitz Safe Bayesian Optimization for Automotive Control
 
-This repository contains code for the paper ["Lipschitz Safe Bayesian Optimization for Automotive Control"](https://arxiv.org/abs/2312.08058) which has been accepted to the [2024 Conference for Decision and Control](https://cdc2024.ieeecss.org/) in Milano, Italy.
+This repository contains code for the paper ["Lipschitz Safe Bayesian Optimization for Automotive Control"](https://arxiv.org/abs/2501.12969) which has been accepted to the [2024 Conference for Decision and Control](https://cdc2024.ieeecss.org/) in Milano, Italy.
 
 If you find our code or paper useful, please consider citing
 ```
